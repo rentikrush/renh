@@ -1,52 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYSTEM ACCESS</title>
+
 <style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+}
+
+/* 📺 TV GLITCH BACKGROUND */
 .tv {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
 
-    /* основной фон */
     background: black;
 
-    /* зерно (шум) */
+    /* шум */
     background-image:
-        radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.05),
+            rgba(255,255,255,0.05) 1px,
+            transparent 2px,
+            transparent 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.03),
+            rgba(255,255,255,0.03) 1px,
+            transparent 3px
+        );
 
-    background-size: 3px 3px, 5px 5px;
-    background-position: 0 0, 1px 1px;
-
-    animation: noiseMove 0.08s infinite linear;
-    opacity: 0.9;
-}
-
-/* дрожание "сигнала" */
-@keyframes noiseMove {
-    0% { transform: translate(0,0); }
-    25% { transform: translate(-1px,1px); }
-    50% { transform: translate(1px,-1px); }
-    75% { transform: translate(-1px,-1px); }
-    100% { transform: translate(1px,1px); }
-}
-
-/* горизонтальные помехи */
-.tv::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.03),
-        rgba(255,255,255,0.03) 1px,
-        transparent 2px,
-        transparent 4px
-    );
     animation: flicker 0.12s infinite;
 }
 
 @keyframes flicker {
-    0% { opacity: 0.9; }
-    50% { opacity: 0.4; }
-    100% { opacity: 1; }
+    0% { opacity: 0.9; transform: translate(0,0); }
+    25% { transform: translate(-1px,1px); }
+    50% { opacity: 0.4; transform: translate(1px,-1px); }
+    75% { transform: translate(-1px,-1px); }
+    100% { opacity: 1; transform: translate(1px,1px); }
+}
+
+/* контент */
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    max-width: 280px;
+    display: none;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+#text {
+    white-space: pre-line;
+    font-size: 14px;
+    margin-top: 20px;
 }
 </style>
+
+</head>
+
+<body>
+
+<div class="tv"></div>
+
+<div class="container">
+
+<h2>SYSTEM BREACH DETECTED</h2>
+
+<img id="photo" src="lola.jpg" alt="Lola">
+
+<div id="text"></div>
+
+</div>
+
+<script>
+
+const lines = [
+"Connecting to system...",
+"Bypassing security...",
+"",
+"TARGET FOUND:",
+"María Dolores Rosa (Lola)",
+"",
+"Scanning profile...",
+"✔ Unusual charm detected",
+"✔ High emotional impact",
+"✔ Unique personality signature",
+"",
+"System analysis...",
+"",
+"ERROR...",
+"",
+"No defects found ❤️",
+"",
+"Final result:",
+"She is not part of the system...",
+"She IS the anomaly 💖"
+];
+
+let i = 0;
+const text = document.getElementById("text");
+const photo = document.getElementById("photo");
+
+function typeWriter() {
+    if (i < lines.length) {
+        text.innerHTML += lines[i] + "\n";
+        i++;
+
+        // показываем фото чуть после старта
+        if (i === 3) {
+            photo.style.display = "block";
+        }
+
+        setTimeout(typeWriter, 500);
+    }
+}
+
+typeWriter();
+
+</script>
+
+</body>
+</html>
