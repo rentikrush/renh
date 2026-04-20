@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACCESO...</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 15px;
+}
+
+#text {
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+#finalScreen {
+    display: none;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+#finalScreen h1 {
+    font-size: 22px;
+}
+
+#finalScreen img {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+#finalScreen p {
+    font-size: 16px;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+</style>
+
+</head>
+<body>
+
+<div id="text"></div>
+<div class="blink">█</div>
+
+<div id="finalScreen">
+    <h1>Lola 💖</h1>
+    <img src="lola.jpg">
+    <p>
+    No era un hackeo…<br><br>
+    solo una forma de decirte<br>
+    que eres increíblemente especial para mí 😌<br><br>
+    Y sinceramente…<br>
+    el mejor “error” que encontré 💘
+    </p>
+</div>
+
+<script>
+const lines = [
+"Conectando...",
+"Accediendo...",
+"",
+"Cargando... 12%",
+"Cargando... 48%",
+"Cargando... 86%",
+"Cargando... 100%",
+"",
+"OBJETIVO:",
+"María Dolores Rosa (Lola)",
+"",
+"Analizando...",
+"",
+"✔ Belleza: excesiva 😳",
+"✔ Carisma: peligroso",
+"✔ Energía: adictiva",
+"",
+"Buscando defectos...",
+"",
+"ERROR...",
+"",
+"No se encontraron defectos ❤️",
+"",
+"Descifrando mensaje...",
+"",
+"3...",
+"2...",
+"1..."
+];
+
+let i = 0;
+const textDiv = document.getElementById("text");
+
+function typeLine() {
+    if (i < lines.length) {
+        textDiv.innerHTML += lines[i] + "\n";
+        i++;
+        setTimeout(typeLine, 450);
+    } else {
+        setTimeout(showFinal, 800);
+    }
+}
+
+function showFinal() {
+    document.body.innerHTML = "";
+    const final = document.getElementById("finalScreen");
+    final.style.display = "block";
+    document.body.appendChild(final);
+}
+
+typeLine();
+</script>
+
+</body>
+</html>
