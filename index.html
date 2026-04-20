@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SYSTEM ACCESS</title>
+<title>SISTEMA ACTIVO</title>
 
 <style>
 body {
@@ -13,7 +13,6 @@ body {
     font-family: monospace;
 }
 
-/* 📺 TV GLITCH BACKGROUND */
 .tv {
     position: fixed;
     inset: 0;
@@ -22,7 +21,6 @@ body {
 
     background: black;
 
-    /* шум */
     background-image:
         repeating-linear-gradient(
             0deg,
@@ -43,22 +41,16 @@ body {
 
 @keyframes flicker {
     0% { opacity: 0.9; transform: translate(0,0); }
-    25% { transform: translate(-1px,1px); }
     50% { opacity: 0.4; transform: translate(1px,-1px); }
-    75% { transform: translate(-1px,-1px); }
-    100% { opacity: 1; transform: translate(1px,1px); }
+    100% { opacity: 1; transform: translate(-1px,1px); }
 }
 
-/* контент */
 .container {
     position: relative;
     z-index: 2;
     padding: 20px;
     max-width: 600px;
     margin: auto;
-}
-
-h2 {
     text-align: center;
 }
 
@@ -75,6 +67,7 @@ img {
     white-space: pre-line;
     font-size: 14px;
     margin-top: 20px;
+    text-align: left;
 }
 </style>
 
@@ -86,9 +79,9 @@ img {
 
 <div class="container">
 
-<h2>SYSTEM BREACH DETECTED</h2>
+<h2>ACCESO AL SISTEMA...</h2>
 
-<img id="photo" src="lola.jpg" alt="Lola">
+<img id="photo" src="lola.jpg">
 
 <div id="text"></div>
 
@@ -97,26 +90,26 @@ img {
 <script>
 
 const lines = [
-"Connecting to system...",
-"Bypassing security...",
+"Conectando al sistema...",
+"Saltando protocolos de seguridad...",
 "",
-"TARGET FOUND:",
+"OBJETIVO ENCONTRADO:",
 "María Dolores Rosa (Lola)",
 "",
-"Scanning profile...",
-"✔ Unusual charm detected",
-"✔ High emotional impact",
-"✔ Unique personality signature",
+"Analizando perfil...",
+"✔ Energía única detectada",
+"✔ Nivel de carisma: peligroso 😳",
+"✔ Personalidad: irrepetible",
 "",
-"System analysis...",
+"Buscando defectos...",
 "",
 "ERROR...",
 "",
-"No defects found ❤️",
+"No se encontraron defectos ❤️",
 "",
-"Final result:",
-"She is not part of the system...",
-"She IS the anomaly 💖"
+"Resultado final:",
+"Lola no pertenece al sistema...",
+"ella es la anomalía más hermosa 💖"
 ];
 
 let i = 0;
@@ -128,7 +121,6 @@ function typeWriter() {
         text.innerHTML += lines[i] + "\n";
         i++;
 
-        // показываем фото чуть после старта
         if (i === 3) {
             photo.style.display = "block";
         }
